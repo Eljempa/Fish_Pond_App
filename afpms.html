@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fish Pond Sensor Readings</title>
+    <style type="text/css">
+        body {
+            background-color: #F5F5F5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .data-container {
+            display: flex;
+            justify-content: space-between;
+            width: 75%;
+            margin: 75px auto;
+            padding: 20px;
+            background-color: #FFF;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .data-item {
+            text-align: center;
+        }
+
+        .data-item h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .data-item p {
+            font-size: 48px;
+            font-weight: bold;
+            color: #6EB7FF;
+        }
+
+        .data-head {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+            font-size: 45px;
+            font-weight: bold;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #FFF;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="data-head">Fish Pond Sensor Realtime Readings</div>
+
+    <div class="data-container">
+        <div class="data-item">
+            <h2>Temperature</h2>
+            <p class="value" id="temperature">22 &#8451;</p>
+        </div>
+        <div class="data-item">
+            <h2>Turbidity</h2>
+            <p class="value" id="turbidity">100 NTU</p>
+        </div>
+        <div class="data-item">
+            <h2>Ammonia</h2>
+            <p class="value" id="ammonia">5 ppm</p>
+        </div>
+    </div>
+
+    <!-- the scripts for products you want to access must be added-->
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAWmYI_nOpaGCzNxeLeGc4W_b6odDKUcuI",
+            authDomain: "semi-automated-fishpond-225c7.firebaseapp.com",
+            databaseURL: "https://semi-automated-fishpond-225c7-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "semi-automated-fishpond-225c7",
+            storageBucket: "semi-automated-fishpond-225c7.appspot.com",
+            messagingSenderId: "279606986954",
+            appId: "1:279606986954:web:8ecdf6a29b6dd6c3180c33"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // getting reference to the database
+        var database = firebase.database();
+
+        // Get references to the data we want
+        var tempRef = database.ref('sensors/temperature');
+        var turbidityRef = database.ref('sensors/turbidity');
+        var ammoniaRef = database.ref('sensors/gas');
+
+        // Fetch and display temperature data
+        tempRef.on('value', function (snapshot) {
+            var temperature = snapshot.val();
+            document.getElementById('temperature').innerHTML = temperature + "&#8451;";
+        });
+
+        // Fetch and display turbidity data
+        turbidityRef.on('value', function (snapshot) {
+            var turbidity = snapshot.val();
+            document.getElementById('turbidity').innerHTML = turbidity + " NTU";
+        });
+
+        // Fetch and display ammonia data
+        ammoniaRef.on('value', function (snapshot) {
+            var ammonia = snapshot.val();
+            document.getElementById('ammonia').innerHTML = ammonia + " ppm";
+        });
+
+    </script>
+
+</body>
+
+</html>
