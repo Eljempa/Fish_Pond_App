@@ -22,7 +22,7 @@
             display: flex;
             flex-grow: 1;
             justify-content: space-between;
-            width: 40%;
+            width: 50%;
             margin: auto;
             padding: 30px;
             background-color: #FFF;
@@ -50,7 +50,7 @@
 
         .data-head {
             margin: auto;
-            width: 50%;
+            width: 40%;
             text-align: center;
             font-size: 35px;
             font-weight: bold;
@@ -81,6 +81,10 @@
         <div class="data-item">
             <h2>Ammonia</h2>
             <p class="value" id="ammonia">5 ppm</p>
+        </div>
+        <div class="data-item">
+            <h2>PH</h2>
+            <p class="value" id="ph">7</p>
         </div>
     </div>
 
@@ -120,6 +124,7 @@
         var tempRef = database.ref('sensors/temperature');
         var turbidityRef = database.ref('sensors/turbidity');
         var ammoniaRef = database.ref('sensors/gas');
+        var phRef = database.ref('sensors/ph');
 
         // Fetch and display temperature data
         tempRef.on('value', function (snapshot) {
@@ -137,6 +142,12 @@
         ammoniaRef.on('value', function (snapshot) {
             var ammonia = snapshot.val();
             document.getElementById('ammonia').innerHTML = ammonia + " ppm";
+        });
+
+         // Fetch and display ph data
+         phRef.on('value', function (snapshot) {
+            var ph = snapshot.val();
+            document.getElementById('ph').innerHTML = ph;
         });
 
     </script>
