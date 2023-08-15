@@ -145,10 +145,11 @@
         var database = firebase.database();
 
         // Get references to the data we want
+        var ammoniaRef = database.ref('sensors/gas');
+         var phRef = database.ref('sensors/ph');
         var tempRef = database.ref('sensors/temperature');
         var turbidityRef = database.ref('sensors/turbidity');
-        var ammoniaRef = database.ref('sensors/gas');
-        var phRef = database.ref('sensors/ph');
+
 
         // Fetch and display temperature data
         tempRef.on('value', function (snapshot) {
