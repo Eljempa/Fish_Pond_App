@@ -76,6 +76,7 @@
         
          .data-button {
             margin: auto;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -106,6 +107,7 @@
 
     <div class="data-button-container">
         <button class="data-button" id="switchOnFeeder">Switch On Feeder</button>
+        <button class="data-button" id="switchOffFeeder">Switch Off Feeder</button>
     </div>
         
 
@@ -174,22 +176,32 @@
          </script>
 
         
-     <script>
-    
-        const button = document.querySelector('#SwitchOnFeeder');
-        const apiAddress = '192.168.67.143';
+    <script>
+        const switchOnButton = document.querySelector('#switchOnFeeder');
+        const switchOffButton = document.querySelector('#switchOffFeeder');
+        const apiAddress = '192.168.67.143'; // Update with the correct address
 
-        button.addEventListener('click', async () => {
+        switchOnButton.addEventListener('click', async () => {
             const response = await fetch(apiAddress + '/SwitchOnFeeder');
             const data = await response.json();
 
             if (data.success) {
-                button.textContent = 'On';
+                switchOnButton.textContent = 'On';
             } else {
-                button.textContent = 'Error';
+                switchOnButton.textContent = 'Error';
             }
         });
-    
+
+        switchOffButton.addEventListener('click', async () => {
+            const response = await fetch(apiAddress + '/SwitchOffFeeder'); // Update with the appropriate endpoint
+            const data = await response.json();
+
+            if (data.success) {
+                switchOffButton.textContent = 'Off';
+            } else {
+                switchOffButton.textContent = 'Error';
+            }
+        });
     </script>
 
     
