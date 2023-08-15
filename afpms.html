@@ -67,11 +67,15 @@
 
         }
 
-    .data-button {
+   .data-button-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh; /* Adjust this value if needed */
+        }
+        
+         .data-button {
+            margin: auto;
         }
     </style>
 </head>
@@ -100,8 +104,8 @@
 
     </div>
 
-    <div class="data-button">
-        <button id="switchOnFeeder">Switch On Feeder</button>
+    <div class="data-button-container">
+        <button class="data-button" id="switchOnFeeder">Switch On Feeder</button>
     </div>
         
 
