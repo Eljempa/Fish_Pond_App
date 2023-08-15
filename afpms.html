@@ -161,12 +161,11 @@
     </script>
 
         <button id="Switch on Feeder">SwitchOnFeeder</button>
+       
 
     <script>
-        button.style.right = '1000px';
-        button.style.top = '200px';
-        button.style.width = '200px';
-        button.style.height = '100px';
+        const screenWidth = window.innerWidth;
+        button.style.left = (screenWidth - button.offsetWidth) / 2;
         
         const button = document.querySelector('#SwitchOnFeeder');
         const apiAddress = 'https://api.my-component.com/';
