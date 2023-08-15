@@ -160,7 +160,7 @@
 
     </script>
 
-        <button id="Turn On">Switch on Feeder</button>
+        <button id="Switch on Feeder">SwitchOnFeeder</button>
 
     <script>
         button.style.left = '100px';
@@ -168,11 +168,11 @@
         button.style.width = '200px';
         button.style.height = '100px';
         
-        const button = document.querySelector('#my-button');
+        const button = document.querySelector('#SwitchOnFeeder');
         const apiAddress = 'https://api.my-component.com/';
 
         button.addEventListener('click', async () => {
-            const response = await fetch(apiAddress + '/turnOn');
+            const response = await fetch(apiAddress + '/SwitchOnFeeder');
             const data = await response.json();
 
             if (data.success) {
