@@ -163,36 +163,39 @@
         // getting reference to the database
         var database = firebase.database();
 
-        // Get references to the data we want
-        var ammoniaRef = database.ref('sensors/gas');
-        var phRef = database.ref('sensors/ph');
-        var tempRef = database.ref('sensors/temperature');
-        var turbidityRef = database.ref('sensors/turbidity');
+       // Get references to the data
+    const ammoniaRef = firebase.database().ref('sensors/gas');
+    const phRef = firebase.database().ref('sensors/ph');
+    const tempRef = firebase.database().ref('sensors/temperature');
+    const turbidityRef = firebase.database().ref('sensors/turbidity');
 
+    // Fetch and display data
+    const displayData = (elementId, value) => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.innerHTML = value;
+        }
+    };
 
-        // Fetch and display temperature data
-        tempRef.on('value', function (snapshot) {
-            var temperature = snapshot.val();
-            document.getElementById('temperature').innerHTML = temperature + "&#8451;";
-        });
+    tempRef.on('value', snapshot => {
+        const temperature = snapshot.val();
+        displayData('temperature', temperature + "&#8451;");
+    });
 
-        // Fetch and display turbidity data
-        turbidityRef.on('value', function (snapshot) {
-            var turbidity = snapshot.val();
-            document.getElementById('turbidity').innerHTML = turbidity + " NTU";
-        });
+    turbidityRef.on('value', snapshot => {
+        const turbidity = snapshot.val();
+        displayData('turbidity', turbidity + " NTU");
+    });
 
-        // Fetch and display ammonia data
-        ammoniaRef.on('value', function (snapshot) {
-            var ammonia = snapshot.val();
-            document.getElementById('ammonia').innerHTML = ammonia + " ppm";
-        });
+    ammoniaRef.on('value', snapshot => {
+        const ammonia = snapshot.val();
+        displayData('ammonia', ammonia + " ppm");
+    });
 
-         // Fetch and display ph data
-         phRef.on('value', function (snapshot) {
-            var ph = snapshot.val();
-            document.getElementById('ph').innerHTML = ph;
-        });
+    phRef.on('value', snapshot => {
+        const ph = snapshot.val();
+        displayData('ph', ph);
+    });
 
          </script>
 
