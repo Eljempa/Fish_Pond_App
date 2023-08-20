@@ -113,15 +113,15 @@
     <div class="data-container">
         <div class="data-item">
             <h2>Temperature</h2>
-            <p class="value" id="temperature ">22 &#8451;</p>
+            <p class="value" id="temperature">22 &#8451;</p>
         </div>
         <div class="data-item">
             <h2>Turbidity</h2>
-            <p class="value" id="turbidity ">100 NTU</p>
+            <p class="value" id="turbidity">100 NTU</p>
         </div>
         <div class="data-item">
             <h2>Ammonia</h2>
-            <p class="value" id="    ammonia ">5 ppm</p>
+            <p class="value" id="ammonia">5 ppm</p>
         </div>
         <div class="data-item">
             <h2>PH</h2>
@@ -173,19 +173,19 @@
         // Fetch and display temperature data
         tempRef.on('value', function (snapshot) {
             var temperature = snapshot.val();
-            document.getElementById('temperature').innerHTML = temperature + "&#8451;";
+            document.getElementById('temperature').innerHTML = temperature /*+ "&#8451;"*/;
         });
 
         // Fetch and display turbidity data
         turbidityRef.on('value', function (snapshot) {
             var turbidity = snapshot.val();
-            document.getElementById('turbidity').innerHTML = turbidity + " NTU";
+            document.getElementById('turbidity').innerHTML = turbidity /*+ " NTU"*/;
         });
 
         // Fetch and display ammonia data
         ammoniaRef.on('value', function (snapshot) {
             var ammonia = snapshot.val();
-            document.getElementById('ammonia').innerHTML = ammonia + " ppm";
+            document.getElementById('ammonia').innerHTML = ammonia /*+ " ppm"*/;
         });
 
          // Fetch and display ph data
@@ -198,7 +198,7 @@
 
         
          
-    <script>
+    /*<script>/*
         const switchOnButton = document.querySelector('#startFeeder');
         const switchOffButton = document.querySelector('#stopFeeder');
         const apiAddress = '192.168.67.143'; // Update with the correct address
@@ -224,7 +224,7 @@
                 switchOffButton.textContent = 'Error';
             }
         });
-    </script>
+    /*</script>*/
     
 
 </body>
