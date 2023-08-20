@@ -1,3 +1,12 @@
+
+        // Import the functions you need from the SDKs you need
+        //import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+<script type="module">
+
+
 <!DOCTYPE html>
 <html>
 
@@ -9,140 +18,91 @@
         body {
             background-color: #F5F5F5;
             font-family: Arial, sans-serif;
-            margin: 0 auto;
+            margin: 0;
             padding: 0;
-            background-image: url('fish_carp_koi.jpg');
-            background-size: contain;
-        }
-
-        .text {
-           /*word-wrap: break-word;*/
-            margin: 0 50px auto;
-             display: inline-block;
         }
 
         .data-container {
             display: flex;
-            flex-grow: 1;
-            align-items: center;
             justify-content: space-between;
-            width: fit-content;
-            margin: 50px auto;
-            padding: 10px;
+            width: 75%;
+            margin: 75px auto;
+            padding: 20px;
             background-color: #FFF;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
 
         .data-item {
-            width: 120px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            boarder-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
         }
 
         .data-item h2 {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
-            margin: auto;
-            padding: auto;
         }
 
         .data-item p {
-            font-size: 25px;
+            font-size: 48px;
             font-weight: bold;
             color: #6EB7FF;
-            margin: auto;
-            padding: auto;
         }
 
-        .data-head1 {
+        .data-head {
             margin: auto;
-            width: 40%;
+            width: 50%;
             text-align: center;
-            justify-content: center;
-            font-size:25px;
+            font-size: 45px;
             font-weight: bold;
-            margin: 45px auto;
-            padding: 10px;
-            background-color: #808080;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #FFF;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             border-radius: 20px;
 
-        }
-
-         .data-head {
-            margin: auto;
-            width: 40%;
-            text-align: center;
-            justify-content: center;
-            font-size: 40px;
-            font-weight: bold;
-            margin: auto;
-            padding: 20px;
-            color: #f7f8f2;
 
         }
-
- .data-button-container {
-            display: flex;
-            flex-grow: 1;
-            justify-content: center;
-            align-items: center;
-            height: 10vh; /* Adjust this value if needed */
-        }
-        
-        .data-button {
-            margin: auto;
-            margin-right: auto;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        
     </style>
 </head>
 
 <body>
-    
-    <div class="data-head">SEMI-AUTOMATED FISH POND MANAGEMENT SYSTEM</div>
-    <div class="data-head1">Fish Pond Sensor Realtime Readings</div>
+
+    <div class="data-head">Fish Pond Sensor Realtime Readings</div>
 
     <div class="data-container">
         <div class="data-item">
             <h2>Temperature</h2>
-            <p class="value" id="temperature ">22 &#8451;</p>
+            <p class="value" id="temperature">22 &#8451;</p>
         </div>
         <div class="data-item">
             <h2>Turbidity</h2>
-            <p class="value" id="turbidity ">100 NTU</p>
+            <p class="value" id="turbidity">100 NTU</p>
         </div>
         <div class="data-item">
             <h2>Ammonia</h2>
-            <p class="value" id="    ammonia ">5 ppm</p>
+            <p class="value" id="ammonia">5 ppm</p>
         </div>
         <div class="data-item">
-            <h2>PH</h2>
-            <p class="value" id="ph">7</p>
+            <h2>ph</h2>
+            <p class="value" id="PH">7</p>
         </div>
-
     </div>
-
-   <div class="data-button-container">
-        <button class="data-button" id="switchOnFeeder">Start Feeder</button>
-        <button class="data-button" id="switchOffFeeder">Stop Feeder</button>
-    </div>
-    
 
     <!-- the scripts for products you want to access must be added-->
 
-   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
 
-   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js"></script>
+
 
     <script>
+        //</script type="module">
+        // Import the functions you need from the SDKs you need
+        //import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
         // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyAWmYI_nOpaGCzNxeLeGc4W_b6odDKUcuI",
@@ -154,84 +114,42 @@
             appId: "1:279606986954:web:8ecdf6a29b6dd6c3180c33"
         };
 
-         // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-        //const app = initializeApp(firebaseConfig);
-        </script>
-    
-        <script>
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
         // getting reference to the database
         var database = firebase.database();
 
-       // Get references to the data
-    const turbidityRef = firebase.database().ref('sensors/turbidity');
-    const tempRef = firebase.database().ref('sensors/temperature');
-    const ammoniaRef = firebase.database().ref('sensors/gas');
-    const phRef = firebase.database().ref('sensors/ph');
-    
-    
-
-    // Fetch and display data
-    const displayData = (elementId, value) => {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.innerHTML = value;
-        }
-    };
-            
-   turbidityRef.on('value', snapshot => {
-        const turbidity = snapshot.val();
-        displayData('turbidity', turbidity + " NTU");
-    });
-       
-
-    tempRef.on('value', snapshot => {
-        const temperature = snapshot.val();
-        displayData('temperature', temperature + "&#8451;");
-    });
-
-    ammoniaRef.on('value', snapshot => {
-        const ammonia = snapshot.val();
-        displayData('ammonia', ammonia + " ppm");
-    });
-
-    phRef.on('value', snapshot => {
-        const ph = snapshot.val();
-        displayData('ph', ph);
-    });
-
-         </script>
-
-        
-         
-    <script>
-        const switchOnButton = document.querySelector('#startFeeder');
-        const switchOffButton = document.querySelector('#stopFeeder');
-        const apiAddress = '192.168.67.143'; // Update with the correct address
-
-        switchOnButton.addEventListener('click', async () => {
-            const response = await fetch(apiAddress + '/startFeeder');
-            const data = await response.json();
-
-            if (data.success) {
-                switchOnButton.textContent = 'On';
-            } else {
-                switchOnButton.textContent = 'Error';
-            }
+        // Get references to the data we want
+        var ammoniaRef = database.ref('sensors/gas');
+        var phRef = database.ref('sensors/ph');
+        var tempRef = database.ref('sensors/temperature');
+        var turbidityRef = database.ref('sensors/turbidity');
+        // Fetch and display temperature data
+        tempRef.on('value', function (snapshot) {
+            var temperature = snapshot.val();
+            document.getElementById('temperature').innerHTML = temperature + "&#8451;";
         });
 
-        switchOffButton.addEventListener('click', async () => {
-            const response = await fetch(apiAddress + '/stopFeeder'); // Update with the appropriate endpoint
-            const data = await response.json();
-
-            if (data.success) {
-                switchOffButton.textContent = 'Off';
-            } else {
-                switchOffButton.textContent = 'Error';
-            }
+        // Fetch and display turbidity data
+        turbidityRef.on('value', function (snapshot) {
+            var turbidity = snapshot.val();
+            document.getElementById('turbidity').innerHTML = turbidity + " NTU";
         });
+
+        // Fetch and display ammonia data
+        ammoniaRef.on('value', function (snapshot) {
+            var ammonia = snapshot.val();
+            document.getElementById('ammonia').innerHTML = ammonia + " ppm";
+        });
+
+        // Fetch and display ph data
+        ammoniaRef.on('value', function (snapshot) {
+            var ph = snapshot.val();
+            document.getElementById('ph').innerHTML = ph;
+        });
+
     </script>
-    
 
 </body>
 
