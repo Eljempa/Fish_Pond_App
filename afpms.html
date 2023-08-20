@@ -164,10 +164,12 @@
         var database = firebase.database();
 
        // Get references to the data
+    const turbidityRef = firebase.database().ref('sensors/turbidity');
+    const tempRef = firebase.database().ref('sensors/temperature');
     const ammoniaRef = firebase.database().ref('sensors/gas');
     const phRef = firebase.database().ref('sensors/ph');
-    const tempRef = firebase.database().ref('sensors/temperature');
-    const turbidityRef = firebase.database().ref('sensors/turbidity');
+    
+    
 
     // Fetch and display data
     const displayData = (elementId, value) => {
@@ -176,15 +178,16 @@
             element.innerHTML = value;
         }
     };
+            
+   turbidityRef.on('value', snapshot => {
+        const turbidity = snapshot.val();
+        displayData('turbidity', turbidity + " NTU");
+    });
+       
 
     tempRef.on('value', snapshot => {
         const temperature = snapshot.val();
         displayData('temperature', temperature + "&#8451;");
-    });
-
-    turbidityRef.on('value', snapshot => {
-        const turbidity = snapshot.val();
-        displayData('turbidity', turbidity + " NTU");
     });
 
     ammoniaRef.on('value', snapshot => {
