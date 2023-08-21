@@ -87,20 +87,20 @@
 
         }
 
- .data-button-container {
+ /*.data-button-container {
             display: flex;
             flex-grow: 1;
             justify-content: center;
             align-items: center;
             height: 10vh; /* Adjust this value if needed */
-        }
+        }*/
         
-        .data-button {
+        /*.data-button {
             margin: auto;
             margin-right: auto;
             font-size: 20px;
             font-weight: bold;
-        }
+        }*/
         
     </style>
 </head>
@@ -130,10 +130,10 @@
 
     </div>
 
-   <div class="data-button-container">
-        <button class="data-button" id="switchOnFeeder">Start Feeder</button>
-        <button class="data-button" id="switchOffFeeder">Stop Feeder</button>
-    </div>
+  /*<div //class="data-button-container">*/
+        /*<button //class="data-button" id="switchOnFeeder">Start Feeder</button>*/
+        /*<button //class="data-button" id="switchOffFeeder">Stop Feeder</button>*/
+    </div>*/
     
 
     <!-- the scripts for products you want to access must be added-->
@@ -204,23 +204,23 @@
 
         
          
-    <script>
-        const switchOnButton = document.querySelector('#startFeeder');
-        const switchOffButton = document.querySelector('#stopFeeder');
-        const apiAddress = '192.168.67.143'; // Update with the correct address
+    //<script>
+        //const switchOnButton = document.querySelector('#startFeeder');
+        //const switchOffButton = document.querySelector('#stopFeeder');
+        //const apiAddress = '192.168.67.143'; // Update with the correct address
 
-        switchOnButton.addEventListener('click', async () => {
-            const response = await fetch(apiAddress + '/startFeeder');
-            const data = await response.json();
+        //switchOnButton.addEventListener('click', async () => {
+            //const response = await fetch(apiAddress + '/startFeeder');
+            //const data = await response.json();
 
-            if (data.success) {
+            /*if (data.success) {
                 switchOnButton.textContent = 'On';
-            } else {
+            }*/ /*else {
                 switchOnButton.textContent = 'Error';
-            }
-        });
+            }*/
+        //});
 
-        switchOffButton.addEventListener('click', async () => {
+        /*switchOffButton.addEventListener('click', async () => {
             const response = await fetch(apiAddress + '/stopFeeder'); // Update with the appropriate endpoint
             const data = await response.json();
 
@@ -229,8 +229,8 @@
             } else {
                 switchOffButton.textContent = 'Error';
             }
-        });
-    </script>
+        });*/
+    //</script>
     
 
 </body>
